@@ -1,5 +1,6 @@
 package com.example.gerenciadorvendas.model;
 
+import com.example.gerenciadorvendas.DTO.VendaRequest;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -15,13 +16,22 @@ import java.util.List;
 @EqualsAndHashCode(of = "id")
 public class Venda {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Integer id;
-    Integer valor;
-    String id_produto;
-    String observacao;
-    String data;
-    String meio_pagamento;
-    String horario;
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private String id;
+    private Integer valor;
+    private String id_produto;
+    private String observacao;
+    private String data;
+    private String meio_pagamento;
+    private String horario;
+
+    public Venda(VendaRequest request){
+        this.data = request.data();
+        this.horario = request.horario();
+        this.id_produto = request.id_produto();
+        this.observacao = request.observacao();
+        this.meio_pagamento = request.meio_pagamento();
+        this.valor = request.valor();
+    }
 }
 
