@@ -1,5 +1,5 @@
 CREATE TABLE vendas(
-    id INT NOT NULL,
+    id TEXT PRIMARY KEY NOT NULL,
     valor INT NOT NULL,
     id_produto TEXT REFERENCES produtos(id) NOT NULL,
     data TEXT NOT NULL,
