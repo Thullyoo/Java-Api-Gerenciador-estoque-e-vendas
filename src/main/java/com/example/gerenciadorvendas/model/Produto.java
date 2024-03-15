@@ -1,5 +1,6 @@
 package com.example.gerenciadorvendas.model;
 
+import com.example.gerenciadorvendas.DTO.ProdutoEditRequest;
 import com.example.gerenciadorvendas.DTO.ProdutoRequest;
 import jakarta.persistence.*;
 import lombok.*;
@@ -25,6 +26,13 @@ public class Produto {
         this.cor = produtoRequest.cor();
         this.estoque = produtoRequest.estoque();
         this.preco = produtoRequest.preco();
+    }
+
+    public Produto(ProdutoEditRequest produtoEditRequest){
+        this.preco = produtoEditRequest.preco();
+        this.estoque = produtoEditRequest.estoque();
+        this.cor = produtoEditRequest.cor();
+        this.nome = produtoEditRequest.nome();
     }
 
 }

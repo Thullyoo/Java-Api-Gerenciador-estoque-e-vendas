@@ -1,5 +1,6 @@
 package com.example.gerenciadorvendas.controllers;
 
+import com.example.gerenciadorvendas.DTO.ProdutoEditRequest;
 import com.example.gerenciadorvendas.DTO.ProdutoRequest;
 import com.example.gerenciadorvendas.model.Produto;
 import com.example.gerenciadorvendas.services.ProdutoService;
@@ -40,6 +41,17 @@ public class ProdutoController {
             return ResponseEntity.ok(produtos);
         } catch (Exception exception){
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Erro ao ver todos os produtos");
+        }
+    }
+
+    @PutMapping
+    @Transactional
+    public ResponseEntity editarProduto(@RequestBody @Valid ProdutoEditRequest request) throws Exception{
+        try {
+            produtoService.editarProduto(request);
+            return ResponseEntity.ok("Produto atualizado");
+        }catch (Exception exception){
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Erro ao atualizar os produtos");
         }
     }
 
